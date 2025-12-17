@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Адаптивний макет</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .block{
+            border:1px solid #bdbdbd;
+            text-align:center;
+            min-height:70px;
+            font-size:20px;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+        }
+        @media(max-width:1199px){
+            .left-header{background:pink;}
+            .right-header{background:pink;}
+            .left-menu{background:pink;}
+            .right-menu{background:pink;}
+            .left-footer{background:pink;}
+            .right-footer{background:pink;}
+        }
+        @media(max-width:991px){
+            .left-header{background:#f3c4ff;}
+            .right-header{background:#f3c4ff;}
+            .left-menu{background:#f3c4ff;}
+            .right-menu{background:#f3c4ff;}
+            .content{background:white;}
+        }
+        @media(max-width:767px){
+            .block{background:#eaffea;color:green;}
+        }
+    </style>
+</head>
+<body>
+<div class="container-fluid">
+
+    <div class="row">
+        <div class="col-lg-9 col-md-8 col-12 block left-header">Левая часть шапки</div>
+        <div class="col-lg-3 col-md-4 col-12 block right-header">Правая часть шапки</div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-3 col-md-3 col-12 block left-menu">Левое меню</div>
+        <div class="col-lg-6 col-md-6 col-12 block content">Контент</div>
+        <div class="col-lg-3 col-md-3 col-12 block right-menu">Правое меню</div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-lg-6 col-md-6 col-12 block left-footer">Левая часть подвала</div>
+        <div class="col-lg-6 col-md-6 col-12 block right-footer">Правая часть подвала</div>
+    </div>
+
+</div>
+</body>
+</html>

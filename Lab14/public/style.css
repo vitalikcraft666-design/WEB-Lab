@@ -1,0 +1,22 @@
+
+@media(min-width:1200px){
+    .left-header{background:#ffdd99;}
+    .right-header{background:#ffffff;color:red;}
+}
+
+@media(max-width:1199px){
+    .block{background:#ffc0cb;}
+}
+
+@media(max-width:991px){
+    .left-menu,.right-menu{background:#dda0dd;}
+}
+
+@media(max-width:767px){
+    .block{
+        background:white;
+        color:green;
+        border:1px solid #ccc;
+        width:100vw;
+    }
+}

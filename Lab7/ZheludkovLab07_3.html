@@ -1,0 +1,48 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Анкета — Завдання 3</title>
+</head>
+
+<body>
+<h2>Завдання 3. Форма анкети</h2>
+
+<form action="result.html" method="post" target="_blank">
+
+<p>Прізвище: <input type="text" name="surname"></p>
+<p>Ім’я: <input type="text" name="name"></p>
+<p>По батькові: <input type="text" name="fname"></p>
+
+<p>Стать:
+    <input type="radio" name="sex" value="m"> Чоловіча
+    <input type="radio" name="sex" value="f"> Жіноча
+</p>
+
+<p>Дата народження: <input type="date" name="birth"></p>
+
+<p>Освіта:
+<select name="edu">
+    <option>Повна середня</option>
+    <option>Професійна</option>
+    <option>Незакінчена вища</option>
+    <option>Вища</option>
+</select>
+</p>
+
+<p>Хобі: <br>
+<input type="checkbox" name="h1"> Спорт<br>
+<input type="checkbox" name="h2"> ІТ<br>
+<input type="checkbox" name="h3"> Музика<br>
+<input type="checkbox" name="h4"> Подорожі<br>
+</p>
+
+<p>Коротко про себе:<br>
+<textarea name="about" cols="60" rows="6"></textarea></p>
+
+<input type="submit" value="Надіслати анкету">
+<input type="reset" value="Очистити">
+
+</form>
+
+</body>
+</html>

@@ -1,0 +1,47 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Замовлення товару — Завдання 4</title>
+</head>
+
+<body>
+<h2>Завдання 4. Форма замовлення товару</h2>
+
+<form action="result.html" method="post" target="_blank">
+
+<p>Номер банківського рахунку:
+<input type="text" name="bank" size="30"></p>
+
+<p>Особистий номер користувача:
+<input type="text" name="userid" size="20"></p>
+
+<p>Оберіть товар (можна кілька):<br>
+<select name="products" multiple size="5">
+    <option>Ноутбук</option>
+    <option>Смартфон</option>
+    <option>Навушники</option>
+    <option>Пауербанк</option>
+    <option>Монітор</option>
+</select>
+</p>
+
+<p>Тип оплати:<br>
+<input type="radio" name="pay" value="cash"> Готівка<br>
+<input type="radio" name="pay" value="card"> Безготівковий<br>
+</p>
+
+<p>Що надіслати у відповіді?<br>
+<input type="checkbox" name="balance"> Дані про залишки на рахунку<br>
+<input type="checkbox" name="payments"> Останні виплати<br>
+</p>
+
+<p>Коментар:<br>
+<textarea name="comment" cols="60" rows="6"></textarea></p>
+
+<input type="submit" value="Оформити замовлення">
+<input type="reset" value="Очистити">
+
+</form>
+
+</body>
+</html>

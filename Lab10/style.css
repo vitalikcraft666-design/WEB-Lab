@@ -1,0 +1,53 @@
+
+body {
+    background-image: url("images/backgrnd.gif");
+    background-size: cover;
+    background-attachment: fixed;
+
+    font-style: italic; 
+    font-size: 18px; 
+    margin-left: 60px; 
+    margin-right: 60px;
+
+    text-align: justify; 
+}
+
+
+p {
+    text-indent: 40px;
+    color: #f6f6f6;
+}
+
+
+h1 {
+    font-weight: bold;
+    text-align: center;
+    color: #2678ec;
+    font-style: normal; 
+}
+
+.img-left {
+    float: left;
+    margin: 10px 20px 10px 0;
+    width: 250px;
+}
+
+.img-right {
+    float: right;
+    margin: 10px 0 10px 20px;
+    width: 250px;
+}
+
+
+a:link {
+    color: blue;
+}
+a:visited {
+    color: purple;
+}
+a:hover {
+    color: red;
+}
+a:active {
+    color: orange;
+}

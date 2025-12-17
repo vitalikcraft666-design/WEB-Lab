@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Лабораторна робота з JavaScript</title>
+    <style>
+        body{
+            font-family: Arial, sans-serif;
+            background:#f4f4f8;
+            margin:0;
+            padding:20px;
+        }
+        .container{
+            max-width:900px;
+            margin:0 auto;
+            background:white;
+            padding:20px 30px 30px;
+            border-radius:10px;
+            box-shadow:0 0 15px rgba(0,0,0,0.1);
+        }
+        h1{
+            text-align:center;
+            margin-bottom:20px;
+        }
+        .lab-buttons{
+            display:flex;
+            flex-wrap:wrap;
+            gap:10px;
+            justify-content:center;
+            margin-bottom:20px;
+        }
+        .lab-buttons button{
+            padding:8px 16px;
+            border-radius:20px;
+            border:1px solid #007bff;
+            background:#fff;
+            cursor:pointer;
+            transition:.2s;
+        }
+        .lab-buttons button.active,
+        .lab-buttons button:hover{
+            background:#007bff;
+            color:#fff;
+        }
+        .lab-section{
+            display:none;
+            border-top:1px solid #ddd;
+            padding-top:20px;
+        }
+        .lab-section.active{
+            display:block;
+        }
+        .task-title{
+            font-weight:bold;
+            margin-bottom:5px;
+        }
+        .run-btn{
+            margin:10px 0;
+            padding:6px 12px;
+            border-radius:6px;
+            border:1px solid #28a745;
+            background:#28a745;
+            color:white;
+            cursor:pointer;
+            transition:.2s;
+        }
+        .run-btn:hover{
+            background:#218838;
+        }
+        .output{
+            background:#f9f9f9;
+            border:1px solid #ddd;
+            border-radius:6px;
+            padding:10px;
+            white-space:pre-wrap;
+            min-height:40px;
+        }
+        .note{
+            font-size:0.9em;
+            color:#666;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Лабораторна робота з JavaScript</h1>
+
+    <div class="lab-buttons">
+        <button data-lab="1" class="active">Лаб 1</button>
+        <button data-lab="2">Лаб 2</button>
+        <button data-lab="3">Лаб 3</button>
+        <button data-lab="4">Лаб 4</button>
+        <button data-lab="5">Лаб 5</button>
+        <button data-lab="6">Лаб 6</button>
+    </div>
+
+    <div id="lab-1" class="lab-section active">
+        <div class="task-title">Завдання 1</div>
+        <p>З допомогою циклу <b>while</b> вивести всі прості числа в проміжку від 0 до 100.</p>
+        <button class="run-btn" onclick="runLab1()">Виконати</button>
+        <div class="output" id="output1"></div>
+        <div class="note">Результат також можна перевірити в консолі браузера (F12 → Console).</div>
+    </div>
+
+    <div id="lab-2" class="lab-section">
+        <div class="task-title">Завдання 2</div>
+        <p>З допомогою циклу <b>do…while</b> вивести числа від 0 до 10 з текстом:</p>
+        <pre>
+0 – це нуль
+1 – непарне число
+2 – парне число
+...
+10 – парне число
+        </pre>
+        <button class="run-btn" onclick="runLab2()">Виконати</button>
+        <div class="output" id="output2"></div>
+    </div>
+
+    <div id="lab-3" class="lab-section">
+        <div class="task-title">Завдання 3</div>
+        <p>
+            Дано число <code>numb = 10000</code>. Ділити його на 2 стільки раз, поки результат ділення
+            не стане менше 50. Число, яке отримаєте, записати в змінну <code>result</code>. Порахувати
+            кількість ітерацій і записати в змінну <code>counter</code>.
+        </p>
+        <button class="run-btn" onclick="runLab3()">Виконати</button>
+        <div class="output" id="output3"></div>
+    </div>
+
+    <div id="lab-4" class="lab-section">
+        <div class="task-title">Завдання 4</div>
+        <p>
+            В змінній <code>month</code> лежить число від 1 до 12. Визначити пору року і назву місяця.<br>
+            Число отримувати через <b>prompt</b>, результат виводити через <b>alert</b>.
+        </p>
+        <button class="run-btn" onclick="runLab4()">Виконати</button>
+        <div class="output" id="output4"></div>
+        <div class="note">За умовою використовується <b>prompt</b> і <b>alert</b>, плюс дублюємо результат тут.</div>
+    </div>
+
+    <div id="lab-5" class="lab-section">
+        <div class="task-title">Завдання 5</div>
+        <p>
+            Задати температуру в градусах за Цельсієм, вивести в градусах за Фаренгейтом.<br>
+            Формула: <code>Tf = (9/5)*Tc + 32</code>.
+        </p>
+        <button class="run-btn" onclick="runLab5()">Виконати</button>
+        <div class="output" id="output5"></div>
+    </div>
+
+    <div id="lab-6" class="lab-section">
+        <div class="task-title">Завдання 6</div>
+        <p>
+            Отримати з <b>prompt</b> число від 1 до 7 і вивести в вікні браузера назву дня тижня,
+            якому відповідає це число.
+        </p>
+        <button class="run-btn" onclick="runLab6()">Виконати</button>
+        <div class="output" id="output6"></div>
+    </div>
+
+</div>
+
+<script>
+    const buttons = document.querySelectorAll('.lab-buttons button');
+    const sections = document.querySelectorAll('.lab-section');
+
+    buttons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const labId = btn.getAttribute('data-lab');
+
+            buttons.forEach(b => b.classList.remove('active'));
+            sections.forEach(s => s.classList.remove('active'));
+
+            btn.classList.add('active');
+            document.getElementById('lab-' + labId).classList.add('active');
+        });
+    });
+
+    function runLab1() {
+        let num = 2;
+        let primes = [];
+
+        while (num <= 100) {
+            let isPrime = true;
+            let i = 2;
+
+            while (i < num) {
+                if (num % i === 0) {
+                    isPrime = false;
+                    break;
+                }
+                i++;
+            }
+
+            if (isPrime) {
+                primes.push(num);
+                console.log(num);
+            }
+            num++;
+        }
+
+        document.getElementById('output1').textContent =
+            "Прості числа від 0 до 100:\n" + primes.join(", ");
+    }
+
+    function runLab2() {
+        let n = 0;
+        let result = "";
+
+        do {
+            if (n === 0) {
+                result += `${n} – це нуль\n`;
+            } else if (n % 2 === 0) {
+                result += `${n} – парне число\n`;
+            } else {
+                result += `${n} – непарне число\n`;
+            }
+            n++;
+        } while (n <= 10);
+
+        console.log(result);
+        document.getElementById('output2').textContent = result;
+    }
+
+    function runLab3() {
+        let numb = 10000;
+        let counter = 0;
+
+        while (numb >= 50) {
+            numb /= 2;
+            counter++;
+        }
+
+        let result = numb;
+        console.log("Результат:", result);
+        console.log("Кількість ітерацій:", counter);
+
+        document.getElementById('output3').textContent =
+            `Початкове число: 10000\nРезультат після ділення: ${result}\nКількість ітерацій: ${counter}`;
+    }
+
+    function runLab4() {
+        let month = +prompt("Введіть число місяця (1-12)");
+        if (isNaN(month)) {
+            alert("Потрібно ввести число від 1 до 12");
+            document.getElementById('output4').textContent = "Введено некоректне значення.";
+            return;
+        }
+
+        let season;
+        switch (month) {
+            case 12:
+            case 1:
+            case 2:
+                season = "Зима";
+                break;
+            case 3:
+            case 4:
+            case 5:
+                season = "Весна";
+                break;
+            case 6:
+            case 7:
+            case 8:
+                season = "Літо";
+                break;
+            case 9:
+            case 10:
+            case 11:
+                season = "Осінь";
+                break;
+            default:
+                alert("Номер місяця має бути від 1 до 12");
+                document.getElementById('output4').textContent = "Місяць має бути від 1 до 12.";
+                return;
+        }
+
+        let months = [
+            "Січень","Лютий","Березень","Квітень","Травень","Червень",
+            "Липень","Серпень","Вересень","Жовтень","Листопад","Грудень"
+        ];
+
+        let name = months[month - 1];
+        let text = `${month} — це ${name}, пора року: ${season}`;
+
+        alert(text);
+        console.log(text);
+        document.getElementById('output4').textContent = text;
+    }
+
+    function runLab5() {
+        let Tc = +prompt("Введіть температуру в °C");
+        if (isNaN(Tc)) {
+            alert("Потрібно ввести число");
+            document.getElementById('output5').textContent = "Введено некоректне значення.";
+            return;
+        }
+        let Tf = (9/5) * Tc + 32;
+        let text = `Температура: ${Tc}°C = ${Tf}°F`;
+        alert(text);
+        console.log(text);
+        document.getElementById('output5').textContent = text;
+    }
+
+    function runLab6() {
+        let day = +prompt("Введіть число від 1 до 7");
+        if (isNaN(day)) {
+            alert("Потрібно ввести число від 1 до 7");
+            document.getElementById('output6').textContent = "Введено некоректне значення.";
+            return;
+        }
+
+        let week = [
+            "Понеділок","Вівторок","Середа","Четвер",
+            "П’ятниця","Субота","Неділя"
+        ];
+
+        if (day >= 1 && day <= 7) {
+            let name = week[day - 1];
+            alert(name);
+            console.log(name);
+            document.getElementById('output6').textContent =
+                `Число ${day} відповідає дню: ${name}`;
+        } else {
+            alert("Число повинно бути від 1 до 7");
+            document.getElementById('output6').textContent =
+                "Число повинно бути від 1 до 7";
+        }
+    }
+</script>
+</body>
+</html>
